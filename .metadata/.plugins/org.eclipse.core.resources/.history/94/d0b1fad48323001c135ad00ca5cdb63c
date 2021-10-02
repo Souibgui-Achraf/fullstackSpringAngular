@@ -1,0 +1,18 @@
+package com.sip.ams.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class EtudiantController {
+	@RequestMapping("/home")
+	public String message(Model model) {
+		System.out.println("Bienvenue au Bootcamp");
+		String formation = "fullstack";
+		String lieu ="Sesame" ;
+		model.addAttribute("training", formation);
+		model.addAttribute("training", formation);
+		return "info" ;
+	}
+}

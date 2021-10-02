@@ -1,0 +1,32 @@
+package com.sip.ams.controllers;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class EtudiantController {
+	@RequestMapping("/home")
+	public String message(Model model) {
+		System.out.println("Bienvenue au Bootcamp");
+		String formation = "fullstack";
+		String lieu ="Sesame" ;
+		model.addAttribute("training", formation);
+		model.addAttribute("location", lieu);
+		return "info" ;
+	}
+	@RequestMapping("/produits")
+	public String listProduct(Model model) {
+		List<String> products = new ArrayList<>();
+		products.add("produit1");
+		products.add("produit2");
+		products.add("produit3");
+		for(int i=1;i<4;i++) {
+			model.addAttribute("prod"+i, products.get(i-1));
+		}
+		return "products" ;
+	}
+}

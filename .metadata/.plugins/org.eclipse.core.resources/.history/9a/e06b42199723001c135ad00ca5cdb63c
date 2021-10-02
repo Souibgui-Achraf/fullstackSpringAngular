@@ -1,0 +1,19 @@
+<html>
+<head>
+
+
+</head>
+<body>
+<table align="center" border="1">
+<tr>
+<td>ID</td><td>Nom</td><td>Email</td>
+</tr>
+<tr th:each="student : ${students}">
+<td th:text="${student.getId}"></td>
+<td th:text="${student.nom}"></td>
+<td th:text="${student.email}"></td>
+</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+package com.sip.ams.controllers;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.sip.ams.entities.Etudiant;
+
+@Controller
+public class EtudiantController {
+	@RequestMapping("/home")
+	public String message(Model model) {
+		System.out.println("Bienvenue au Bootcamp");
+		String formation = "fullstack";
+		String lieu ="Sesame" ;
+		model.addAttribute("training", formation);
+		model.addAttribute("location", lieu);
+		return "info" ;
+	}
+	@RequestMapping("/produits")
+	//public String listProduct(Model model) {
+	public ModelAndView ListProduct() {
+		ModelAndView mv =new ModelAndView();
+		List<String> products = new ArrayList<>();
+		products.add("voiture");
+		products.add("camion");	
+		//model.addAttribute("produit1",products);
+		mv.addObject("produits",products);
+		mv.setViewName("products");
+		return mv;
+	}
+	@RequestMapping("/students")
+	public ModelAndView listStudent() {
+		ModelAndView mv = new ModelAndView();
+		List<Etudiant> students = new ArrayList<>();
+		students.add(new Etudiant(1,"achraf","achrafsoubgui@ensi-uma.tn"));
+		students.add(new Etudiant(2,"ahmed","ahmedsoubgui@ensi-uma.tn"));
+		students.add(new Etudiant(3,"patrick","apatricksoubgui@ensi-uma.tn"));
+		mv.addObject("students", students);
+		mv.setViewName("student");
+		return mv;
+	}
+}
