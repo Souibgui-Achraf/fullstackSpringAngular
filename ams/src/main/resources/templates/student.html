@@ -11,11 +11,11 @@
 <td>ID</td><td>Nom</td><td>Email</td><td>Modifier</td><td>Supprimer</td>
 </tr>
 <tr th:each="student : ${students}" align="center">
-<td th:text="${student.getId}"></td>
+<td th:text="${student.id}"></td>
 <td th:text="${student.nom}"></td>
 <td th:text="${student.email}"></td>
-<td align="center"><a href="#" class ="btn btn-warning">Modifier</a></td>
-<td align="center"><a href="#" class ="btn btn-danger">Supprimer</a></td>
+<td align="center"><a th:href="@{/etudiant/update/{id}(id=${student.id})}" class ="btn btn-warning">Modifier</a></td>
+<td align="center"><a th:href="@{/etudiant/delete/{id}(id=${student.id})}" class ="btn btn-danger">Supprimer</a></td>
 </tr>
 </table>
 

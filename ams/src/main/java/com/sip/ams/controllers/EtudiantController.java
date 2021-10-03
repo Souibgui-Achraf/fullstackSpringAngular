@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,4 +78,18 @@ public class EtudiantController {
 			return "redirect:students";
 
 		}
+	@RequestMapping(value ="/delete/{id}", method= RequestMethod.GET)
+	public String supprimer(@PathVariable("id") int id) {
+		System.out.println(id);
+		students.remove(recherche(students,id));
+		return "redirect:../students";
+	}
+	private Etudiant recherche(List<Etudiant> le , int index) {
+		for (Etudiant e :le) {
+			if (e.getId()==index) {
+				return e ;
+			}
+		}
+		return null;
+	}
 }
