@@ -18,7 +18,7 @@ import com.sip.ams.entities.Etudiant;
 @Controller
 public class EtudiantController {
 
-	List<Etudiant> students = new ArrayList<>();
+	public List<Etudiant> students = new ArrayList<>();
 	{
 		students.add(new Etudiant(1, "achraf", "achrafsoubgui@ensi-uma.tn"));
 		students.add(new Etudiant(2, "ahmed", "ahmedsoubgui@ensi-uma.tn"));
@@ -103,18 +103,26 @@ public class EtudiantController {
 
 	}
 	
-	@RequestMapping(value = "/update/", method = RequestMethod.POST)
-		public String updateStudent(@RequestParam("id") int id, @RequestParam("nomEtudiant") String nom,
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+		public String updateStudent(@RequestParam("id") int id, @RequestParam("nom") String nom,
 				@RequestParam("email") String email) {
 			// ModelAndView mv = new ModelAndView();
 			// mv.setViewName("listStudents");
 			// return mv;
-			students.remove(recherche(students,id));
 			Etudiant e = new Etudiant(id, nom, email);
+			students.set(indexStudent(id),e);
+			
 			System.out.println(e);
-			students.add(e);
 			System.out.println(students);
 			return "redirect:students";
 
 		}
+	public int indexStudent(int id) {
+		for (int i=0;i<students.size();i++) {
+			if (students.get(i).getId()==id) {
+				return i;
+			}
+		}
+		return -1;
+	}
 }
