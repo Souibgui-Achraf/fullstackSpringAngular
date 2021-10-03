@@ -97,13 +97,13 @@ public class EtudiantController {
 		ModelAndView mv = new ModelAndView();
 		Etudiant e = null;
 		e=recherche(students,id);
-		mv.addObject("etudiant", e);
+		model.addAttribute("student", e);
 		mv.setViewName("updateStudent");
 		return mv;
 
 	}
 	
-	@RequestMapping(value = "/update/", method = RequestMethod.POST)
+	@RequestMapping(value = "/update/{id}/{nom}/{email}", method = RequestMethod.POST)
 		public String updateStudent(@RequestParam("id") int id, @RequestParam("nomEtudiant") String nom,
 				@RequestParam("email") String email) {
 			// ModelAndView mv = new ModelAndView();
@@ -114,7 +114,7 @@ public class EtudiantController {
 			System.out.println(e);
 			students.add(e);
 			System.out.println(students);
-			return "redirect:students";
+			return "redirect:..students";
 
 		}
 }
