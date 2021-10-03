@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sip.ams.entities.Etudiant;
 
+@RequestMapping("etudiant")
 @Controller
 public class EtudiantController {
 

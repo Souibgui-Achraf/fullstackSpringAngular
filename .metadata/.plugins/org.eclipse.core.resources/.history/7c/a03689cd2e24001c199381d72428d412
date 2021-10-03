@@ -1,0 +1,22 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+</head>
+<body>
+<table class="table" align="center" border="1">
+<tr>
+<td>ID</td><td>Nom</td><td>Email</td><td>Modifier</td><td>Supprimer</td>
+</tr>
+<tr th:each="student : ${students}">
+<td th:text="${student.getId}"></td>
+<td th:text="${student.nom}"></td>
+<td th:text="${student.email}"></td>
+<td ><a href="#" class ="btn btn-warning">Modifier</a></td>
+<td ><a href="#">Supprimer</a></td>
+</tr>
+</table>
+
+</body>
+</html>
